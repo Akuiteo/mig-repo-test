@@ -8,7 +8,7 @@ public class BenchmarkMain {
 
 
 
-		tests.shouldSearchPullrequest_givenState();
+		tests.shouldGetOneUserByLogin();
 
 
 

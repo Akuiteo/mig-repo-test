@@ -38,7 +38,7 @@ public class GithubRestClientTests implements ClientTests {
 
 	public void initGithub() throws IOException {
 		this.client = GitHub.connectToEnterprise("https://api.github.com", "akxcn",
-				"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");
+				"");
 	}
 
 	/* ***************************************** */
@@ -46,7 +46,7 @@ public class GithubRestClientTests implements ClientTests {
 	/* ***************************************** */
 
 	/**
-	 * Testé et OK
+	 * Testï¿½ et OK
 	 */
 	public void shouldGetPullRequests_givenId() throws IOException {
 		System.out.println(">> BEGIN shouldGetPullRequests_givenId");
@@ -62,7 +62,7 @@ public class GithubRestClientTests implements ClientTests {
 	}
 
 	/**
-	 * Testé et OK
+	 * Testï¿½ et OK
 	 */
 	public void shouldSearchPullrequest_givenTitle() throws IOException {
 		System.out.println(">> BEGIN shouldSearchPullrequest_givenTitle");
@@ -82,7 +82,7 @@ public class GithubRestClientTests implements ClientTests {
 	}
 
 	/**
-	 * Testé et OK
+	 * Testï¿½ et OK
 	 */
 	public void shouldSearchPullrequest_givenState() throws IOException {
 		System.out.println(">> BEGIN shouldSearchPullrequest_givenTitle");
@@ -174,7 +174,13 @@ public class GithubRestClientTests implements ClientTests {
 		};
 	}
 
+<<<<<<< Updated upstream
 
+=======
+	/**
+	 * Teste et OK
+	 */
+>>>>>>> Stashed changes
 	public void shouldCreateReleaseBranch() throws IOException {
 		GHBranch branch = client.getRepository(REPO_NAME).getBranch(MAIN_BRANCH);
 
@@ -194,15 +200,34 @@ public class GithubRestClientTests implements ClientTests {
 		System.out.println(refCreated.getRef());
 	}
 
+
+	/**
+	 * Teste et OK
+	 */
 	public void shouldMoveAllPullRequestFromTo() throws IOException {
 
+<<<<<<< Updated upstream
 		client.getRepository(REPO_NAME).createRef("branch-to-move", "7be7a4ef58aa30eec9048e72422b7aed976a4e06");
 		GHPullRequest pr =client.getRepository(REPO_NAME).createPullRequest("pr-tomove", "branch-to-move", "main", "body");
+=======
+		//client.getRepository(REPO_NAME).createRef("branchtomove", "9b08b3f37638d6c00164a683e32babc82afa51cf");
+
+//		GHPullRequest pr = client.getRepository(REPO_NAME).createPullRequest("PR to move", "branch-to-move", "main",
+//				"body");
+		GHPullRequest pr = client.getRepository(REPO_NAME).getPullRequest(3);
+
+>>>>>>> Stashed changes
 		pr.setBaseBranch("develop");
 
 	}
 
+<<<<<<< Updated upstream
 
+=======
+	/**
+	 * Teste et OK
+	 */
+>>>>>>> Stashed changes
 	public void shouldUnlockBranch() throws IOException {
 
 		client.getRepository(REPO_NAME)//
@@ -226,25 +251,53 @@ public class GithubRestClientTests implements ClientTests {
 	}
 
 
+<<<<<<< Updated upstream
+=======
+	/**
+	 * Teste et OK
+	 */
+>>>>>>> Stashed changes
 	public void shouldMergeBranchWithFF() throws IOException {
-		GHPullRequest pr = client.getRepository(REPO_NAME).getPullRequest(123);
-		pr.merge("merge with ff", "7be7a4ef58aa30eec9048e72422b7aed976a4e06", MergeMethod.REBASE);
+		GHPullRequest pr = client.getRepository(REPO_NAME).getPullRequest(2);
+		pr.merge("merge with ff", "8fa8efcf7a9f1ce3e19f370a1caebd288705bf57", MergeMethod.REBASE);
 	}
 
 	/* ***************************************** */
 	/* USERS */
 	/* ***************************************** */
 
+<<<<<<< Updated upstream
 
+=======
+	/**
+	 * Teste et OK
+	 */
+>>>>>>> Stashed changes
 	public void shouldGetUsers() throws IOException {
 		System.out.println(">> BEGIN shouldGetUsers");
-		PagedIterable<GHUser> users = this.client.listUsers();
+		PagedIterable<GHUser> users = this.client.getRepository(REPO_NAME).listCollaborators();
+
+		users.asList().stream().forEach(u -> {
+			try {
+				System.out.println(u.getEmail());
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			System.out.println(u.getLogin());
+		});
 		System.out.println("END shouldGetUsers <<");
 	}
 
+	/**
+	 * Teste et OK
+	 */
 	public void shouldGetOneUserByLogin() throws IOException {
 		System.out.println(">> BEGIN shouldGeOnetUserByLogin");
 		GHUser users = this.client.getUser("akxcn");
+
+		System.out.println(users.getLogin());
+
 		System.out.println("END shouldGeOnetUserByLogin <<");
 	}
 
