@@ -25,7 +25,7 @@ public class GithubRestClientTests implements ClientTests {
 
 	private GitHub client;
 
-	public String REPO_NAME = "test-repo";
+	public String REPO_NAME = "Akuiteo/mig-repo-test";
 	public String MAIN_BRANCH = "main";
 	public String PROTECTION_TEST_BRANCH = "protection-test-branch";
 	public String SOURCE_MERGEABLE_BRANCH_NAME = "mergeable-test-branch";
@@ -45,21 +45,28 @@ public class GithubRestClientTests implements ClientTests {
 	/* PULL REQUESTS */
 	/* ***************************************** */
 
+	/**
+	 * Testé et OK
+	 */
 	public void shouldGetPullRequests_givenId() throws IOException {
 		System.out.println(">> BEGIN shouldGetPullRequests_givenId");
-		int id = 1234;
+		int id = 1;
 
 		GHPullRequest pr = client.getRepository(REPO_NAME).getPullRequest(id);
 
 		System.out.println("PULL REQUEST");
 		System.out.println(pr.getNumber());
-		System.out.println(pr.getNumber());
+		System.out.println(pr.getTitle());
+		System.out.println(pr.getBase());
 		System.out.println("END shouldGetPullRequests_givenId <<");
 	}
 
+	/**
+	 * Testé et OK
+	 */
 	public void shouldSearchPullrequest_givenTitle() throws IOException {
 		System.out.println(">> BEGIN shouldSearchPullrequest_givenTitle");
-		String title = "Test";
+		String title = "*properties*";
 
 		PagedSearchIterable<GHPullRequest> pullrequests = this.client.getRepository(REPO_NAME)//
 				.searchPullRequests()//
@@ -74,6 +81,9 @@ public class GithubRestClientTests implements ClientTests {
 		System.out.println("END shouldSearchPullrequest_givenTitle <<");
 	}
 
+	/**
+	 * Testé et OK
+	 */
 	public void shouldSearchPullrequest_givenState() throws IOException {
 		System.out.println(">> BEGIN shouldSearchPullrequest_givenTitle");
 
@@ -89,6 +99,7 @@ public class GithubRestClientTests implements ClientTests {
 		}
 		System.out.println("END shouldSearchPullrequest_givenTitle <<");
 	}
+
 
 	public void shouldCreatePullrequest() throws IOException {
 		System.out.println(">> BEGIN shouldCreatePullrequest");

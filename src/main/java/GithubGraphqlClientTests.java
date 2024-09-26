@@ -3,7 +3,7 @@ import java.io.IOException;
 public class GithubGraphqlClientTests implements ClientTests {
 
 	public void initGithub() {
-		this.client = new
+
 	}
 
 	public void shouldGetPullRequests_givenId() throws IOException {

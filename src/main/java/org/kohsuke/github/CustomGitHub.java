@@ -2,10 +2,6 @@ package  org.kohsuke.github;
 
 import java.io.IOException;
 
-import org.kohsuke.github.GitHub;
-import org.kohsuke.github.GitHubAbuseLimitHandler;
-import org.kohsuke.github.GitHubRateLimitChecker;
-import org.kohsuke.github.GitHubRateLimitHandler;
 import org.kohsuke.github.authorization.AuthorizationProvider;
 import org.kohsuke.github.connector.GitHubConnector;
 
@@ -21,6 +17,7 @@ public class CustomGitHub extends GitHub {
 
 
 	public GHRepository getRepository() {
+		return null;
 
 	}
 
